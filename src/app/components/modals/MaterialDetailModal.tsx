@@ -12,64 +12,64 @@ interface MaterialDetailModalProps {
 
 const materialData: Record<string, any> = {
   PLA: {
-    name: "PLA (Ácido Poliláctico)",
-    tagline: "El estándar de la industria. Biodegradable y fácil de imprimir.",
-    description: "Ideal para prototipos rápidos, modelos decorativos y piezas que no estarán expuestas a altas temperaturas o estrés mecánico severo. Es el material más popular por su gran variedad de colores y acabados.",
+    name: "PLA",
+    tagline: "El estándar para prototipos rápidos.",
+    description: "Biodegradable y con excelente resolución de impresión. Ideal para prototipos visuales, maquetas arquitectónicas y piezas que no requieren soportar altos esfuerzos mecánicos o temperaturas superiores a 50°C. Disponible en la mayor variedad de colores.",
     image: "https://images.unsplash.com/photo-1739169169463-450148af26ce?q=80&w=1000&auto=format&fit=crop",
     specs: [
-      { label: "Resistencia Térmica", value: "Baja (hasta 60°C)", icon: Thermometer, color: "text-red-400" },
-      { label: "Resistencia al Impacto", value: "Media-Baja", icon: Hammer, color: "text-orange-400" },
-      { label: "Facilidad de Impresión", value: "Alta", icon: Zap, color: "text-green-400" },
-      { label: "Acabado Superficial", value: "Excelente", icon: Layers, color: "text-blue-400" },
+      { label: "Resistencia Térmica", value: "Baja (hasta 55°C)", icon: Thermometer },
+      { label: "Resistencia al Impacto", value: "Media-Baja", icon: Hammer },
+      { label: "Facilidad de Formateo", value: "Alta", icon: Zap },
+      { label: "Acabado Superficial", value: "Excelente", icon: Layers },
     ],
-    pros: ["Económico", "Gran variedad de colores", "Biodegradable", "Alta rigidez"],
-    cons: ["Se deforma con el calor (sol directo)", "Frágil ante golpes fuertes"],
-    bestFor: ["Prototipos visuales", "Figuras y Juguetes", "Maquetas arquitectónicas", "Organizadores de escritorio"],
+    pros: ["Económico y accesible", "Resolución de detalles máxima", "Sin deformaciones al imprimir", "Opciones de colores vibrantes"],
+    cons: ["Se ablanda bajo exposición directa al sol", "Comportamiento frágil bajo estrés"],
+    bestFor: ["Prototipos estéticos", "Figuras decorativas", "Piezas funcionales de interior", "Maquetas"],
   },
   PETG: {
-    name: "PETG (Polietileno Tereftalato)",
-    tagline: "El equilibrio perfecto entre resistencia y facilidad de uso.",
-    description: "Combina la facilidad de impresión del PLA con la resistencia del ABS. Es ideal para piezas funcionales, soportes y elementos que requieren cierta flexibilidad y resistencia química.",
-    image: "https://images.unsplash.com/photo-1570717909903-2a032f8c0e1a?q=80&w=1000&auto=format&fit=crop",
-    specs: [
-      { label: "Resistencia Térmica", value: "Media (hasta 75°C)", icon: Thermometer, color: "text-orange-400" },
-      { label: "Resistencia al Impacto", value: "Alta", icon: Hammer, color: "text-green-400" },
-      { label: "Facilidad de Impresión", value: "Media-Alta", icon: Zap, color: "text-yellow-400" },
-      { label: "Flexibilidad", value: "Media", icon: Layers, color: "text-blue-400" },
-    ],
-    pros: ["Resistente al agua y químicos", "Duradero", "No emite olores fuertes", "Certificable para contacto alimentario (según marca)"],
-    cons: ["Puede hacer 'hilos' (stringing)", "Difícil de pegar o pintar"],
-    bestFor: ["Piezas mecánicas", "Soportes", "Macetas", "Piezas para exterior"],
-  },
-  ABS: {
-    name: "ABS (Acrilonitrilo Butadieno Estireno)",
-    tagline: "El clásico de la ingeniería. Robusto y mecanizable.",
-    description: "Un material técnico conocido por su dureza y resistencia al calor. Es perfecto para piezas que sufrirán desgaste, y permite un post-procesado químico con acetona para lograr superficies lisas como vidrio.",
-    image: "https://images.unsplash.com/photo-1750534232339-017655f56081?q=80&w=1000&auto=format&fit=crop",
-    specs: [
-      { label: "Resistencia Térmica", value: "Alta (hasta 95°C)", icon: Thermometer, color: "text-green-400" },
-      { label: "Resistencia al Impacto", value: "Muy Alta", icon: Hammer, color: "text-green-400" },
-      { label: "Facilidad de Impresión", value: "Media-Baja", icon: Zap, color: "text-red-400" },
-      { label: "Post-Procesado", value: "Excelente", icon: Layers, color: "text-purple-400" },
-    ],
-    pros: ["Muy resistente al calor", "Lijable y pintable", "Alisado químico posible", "Durabilidad extrema"],
-    cons: ["Requiere impresora cerrada (warping)", "Emite olores al imprimir", "Se contrae al enfriar"],
-    bestFor: ["Piezas automotrices", "Carcasas electrónicas", "Engranajes", "Piezas expuestas al sol"],
-  },
-  TPU: {
-    name: "TPU (Poliuretano Termoplástico)",
-    tagline: "Flexible, elástico y resistente a la abrasión.",
-    description: "Un material similar a la goma que se puede estirar y doblar sin romperse. Ideal para amortiguadores, sellos, fundas de celular y cualquier pieza que necesite absorber impactos.",
+    name: "PETG",
+    tagline: "El equilibrio perfecto entre flexibilidad y dureza.",
+    description: "Un termoplástico de ingeniería que combina la facilidad de impresión del PLA con la fuerza del ABS. Resistente al agua y a químicos ligeros, es el material predilecto para fundas mecánicas, contenedores y piezas funcionales de uso diario.",
     image: "https://images.unsplash.com/photo-1758677821691-1a63fdc9a183?q=80&w=1000&auto=format&fit=crop",
     specs: [
-      { label: "Resistencia Térmica", value: "Media (hasta 60-70°C)", icon: Thermometer, color: "text-yellow-400" },
-      { label: "Resistencia al Impacto", value: "Indestructible", icon: Hammer, color: "text-green-400" },
-      { label: "Facilidad de Impresión", value: "Baja", icon: Zap, color: "text-red-400" },
-      { label: "Elasticidad", value: "Extrema", icon: Layers, color: "text-purple-400" },
+      { label: "Resistencia Térmica", value: "Media (hasta 75°C)", icon: Thermometer },
+      { label: "Resistencia al Impacto", value: "Alta", icon: Hammer },
+      { label: "Flexibilidad Tensional", value: "Media", icon: Zap },
+      { label: "Tolerancia Química", value: "Excelente", icon: Layers },
     ],
-    pros: ["Flexible", "Amortigua vibraciones", "Resistente a aceites y grasas", "Irrompible"],
-    cons: ["Impresión lenta", "Difícil de usar con soportes", "No se puede lijar bien"],
-    bestFor: ["Fundas de teléfono", "Neumáticos RC", "Juntas y sellos", "Topes de puerta"],
+    pros: ["Ligeramente flexible, no se quiebra", "Excelente adherencia entre capas", "Apto para estar a la intemperie", "No emite olores tóxicos"],
+    cons: ["Propenso a formar hilos (stringing)", "No reacciona bien al lijado rústico"],
+    bestFor: ["Piezas estructurales", "Soportes de cámara", "Envases funcionales", "Partes de uso exterior"],
+  },
+  ABS: {
+    name: "ABS",
+    tagline: "Ultra resistente, hecho para la industria.",
+    description: "El clásico material industrial (el mismo que usan las piezas de LEGO). Extremadamente duro y resistente a las altas temperaturas, es perfecto para piezas automotrices y piezas que sufrirán impacto y fricción constante.",
+    image: "https://images.unsplash.com/photo-1761646238073-2854cebdc344?q=80&w=1000&auto=format&fit=crop",
+    specs: [
+      { label: "Resistencia Térmica", value: "Alta (hasta 95°C)", icon: Thermometer },
+      { label: "Resistencia al Impacto", value: "Muy Alta", icon: Hammer },
+      { label: "Mecanizabilidad", value: "Excelente", icon: Zap },
+      { label: "Post-Procesado", value: "Óptimo", icon: Layers },
+    ],
+    pros: ["Soporta ambientes de calor extremo", "Se puede lijar y taladrar fácilmente", "Permite alisado químico con vapor", "No cede ante tensión constante"],
+    cons: ["Sufre contracción térmica rápida", "Emisiones agresivas durante impresión"],
+    bestFor: ["Piezas de motor y automotor", "Carcasas de herramientas", "Engranajes funcionales", "Repuestos industriales"],
+  },
+  TPU: {
+    name: "TPU",
+    tagline: "Propiedades del caucho. Libertad geométrica.",
+    description: "Un elastómero que permite crear piezas que se doblan y estiran como la goma. Diseñado para casos de uso que requieren absorción de impactos, sellos herméticos o características táctiles suaves.",
+    image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop",
+    specs: [
+      { label: "Resistencia Térmica", value: "Media (70°C)", icon: Thermometer },
+      { label: "Absorción de Impacto", value: "Extrema", icon: Hammer },
+      { label: "Elasticidad Continua", value: "Imbatible", icon: Zap },
+      { label: "Resistencia a Abrasión", value: "Muy Alta", icon: Layers },
+    ],
+    pros: ["Virtualmente indestructible por impacto", "Amortigua fuertes vibraciones", "Se flexiona y recobra su forma", "Alta tolerancia a los aceites"],
+    cons: ["Requiere velocidades de impresión muy lentas", "Los voladizos son difíciles de lograr sin fallas"],
+    bestFor: ["Sellos y Juntas", "Fundas Anti-choque", "Plantillas de calzado", "Neumáticos R/C"],
   },
 };
 
@@ -79,85 +79,84 @@ export function MaterialDetailModal({ isOpen, onClose, material }: MaterialDetai
   if (!data) return null;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Detalle de Material">
-      <div className="space-y-8">
+    <Modal isOpen={isOpen} onClose={onClose} title="Especificaciones del Material">
+      <div className="space-y-10 pb-8">
         {/* Hero Section */}
-        <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden group">
-          <img 
-            src={data.image} 
-            alt={data.name} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group border border-white/10 bg-black">
+          <img
+            src={data.image}
+            alt={data.name}
+            className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105 opacity-60 mix-blend-luminosity"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent opacity-90" />
-          <div className="absolute bottom-0 left-0 p-6 md:p-8">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 tracking-tight">{data.name}</h2>
-            <p className="text-lg md:text-xl text-gray-300 font-medium">{data.tagline}</p>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 p-8 md:p-10 w-full">
+            <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-3 tracking-tighter">{data.name}</h2>
+            <p className="text-xl md:text-2xl text-[#86868b] font-medium tracking-tight bg-clip-text max-w-2xl">{data.tagline}</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Main Info */}
-          <div className="md:col-span-2 space-y-8">
+          <div className="md:col-span-2 space-y-10">
             <div>
-              <h3 className="text-xl font-semibold text-white mb-4">Descripción</h3>
-              <p className="text-gray-400 leading-relaxed text-lg">
+              <p className="text-[#86868b] leading-relaxed text-lg md:text-xl font-medium tracking-tight">
                 {data.description}
               </p>
             </div>
 
-            <div>
-               <h3 className="text-xl font-semibold text-white mb-4">Especificaciones Técnicas</h3>
-               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 {data.specs.map((spec: any, idx: number) => (
-                   <div key={idx} className="bg-white/5 border border-white/5 rounded-xl p-4 flex items-center gap-4">
-                     <div className={cn("p-2 rounded-lg bg-white/5", spec.color)}>
-                       <spec.icon className="w-5 h-5" />
-                     </div>
-                     <div>
-                       <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">{spec.label}</p>
-                       <p className="text-white font-medium">{spec.value}</p>
-                     </div>
-                   </div>
-                 ))}
-               </div>
+            <div className="pt-8 border-t border-white/10">
+              <h3 className="text-2xl font-bold text-white mb-6 tracking-tight">Capacidades Técnicas</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {data.specs.map((spec: any, idx: number) => (
+                  <div key={idx} className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 flex items-center gap-5">
+                    <div className="p-3 rounded-xl bg-white/10 text-white">
+                      <spec.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-[#86868b] uppercase tracking-wider font-bold mb-1">{spec.label}</p>
+                      <p className="text-white font-semibold">{spec.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <div className="bg-green-500/10 border border-green-500/20 rounded-2xl p-6">
-              <h4 className="text-green-400 font-bold mb-4 flex items-center gap-2">
-                <Check className="w-5 h-5" /> Ventajas
+            <div className="bg-white/[0.03] border border-white/5 rounded-3xl p-6">
+              <h4 className="text-white font-bold mb-5 flex items-center gap-2">
+                Puntos Fuertes
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-4">
                 {data.pros.map((item: string, idx: number) => (
-                  <li key={idx} className="text-sm text-gray-300 flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 shrink-0" />
+                  <li key={idx} className="text-sm font-medium text-[#86868b] flex items-start gap-3">
+                    <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6">
-              <h4 className="text-red-400 font-bold mb-4 flex items-center gap-2">
-                <X className="w-5 h-5" /> Limitaciones
+            <div className="bg-white/[0.03] border border-white/5 rounded-3xl p-6">
+              <h4 className="text-white font-bold mb-5 flex items-center gap-2">
+                Limitaciones
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-4">
                 {data.cons.map((item: string, idx: number) => (
-                  <li key={idx} className="text-sm text-gray-300 flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 shrink-0" />
+                  <li key={idx} className="text-sm font-medium text-[#86868b] flex items-start gap-3">
+                    <X className="w-4 h-4 text-[#86868b] opacity-50 shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-              <h4 className="text-white font-bold mb-4">Usos Recomendados</h4>
+            <div className="bg-white/[0.03] border border-white/5 rounded-3xl p-6">
+              <h4 className="text-white font-bold mb-5">Aplicaciones Ideales</h4>
               <div className="flex flex-wrap gap-2">
                 {data.bestFor.map((tag: string, idx: number) => (
-                  <span key={idx} className="px-3 py-1 bg-white/10 text-xs font-medium text-gray-300 rounded-full border border-white/5">
+                  <span key={idx} className="px-3 py-1.5 bg-white/10 text-xs font-semibold text-white rounded-full border border-white/5">
                     {tag}
                   </span>
                 ))}

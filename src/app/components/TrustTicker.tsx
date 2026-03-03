@@ -1,32 +1,38 @@
-import { Truck, Palette, Package, Zap } from "lucide-react";
-import { motion } from "motion/react";
+import { Zap, PackageCheck, Palette, MapPin } from "lucide-react";
 
 const badges = [
   { icon: Zap, text: "Calidad Premium Asegurada" },
-  { icon: Package, text: "Venta Mayorista y Minorista" },
-  { icon: Palette, text: "Todos los filamentos y acabados" },
-  { icon: Truck, text: "Envíos desde La Plata" },
+  { icon: PackageCheck, text: "Minorista y Mayorista" },
+  { icon: Palette, text: "Filamentos Industriales" },
+  { icon: MapPin, text: "Envíos a todo el país" },
 ];
 
 export function TrustTicker() {
   return (
-    <section className="py-8 bg-neutral-950 border-b border-white/5 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-500">
-          {badges.map((badge, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-3 text-sm md:text-base font-medium text-gray-300"
-            >
-              <badge.icon className="w-5 h-5 text-white" />
-              <span>{badge.text}</span>
-            </motion.div>
-          ))}
-        </div>
+    <section className="bg-black py-6 border-b border-white/[0.05] overflow-hidden flex relative z-20">
+
+      {/* Left/Right Fade out Gradients */}
+      <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+      {/* Infinite scrolling track */}
+      <div className="flex w-fit animate-marquee hover:[animation-play-state:paused] whitespace-nowrap items-center">
+        {/* We map the array 3 times to create the infinite loop effect seamlessly */}
+        {[...Array(3)].map((_, arrayIndex) => (
+          <div key={`array-${arrayIndex}`} className="flex shrink-0 items-center justify-around gap-12 px-6">
+            {badges.map((badge, index) => (
+              <div
+                key={`badge-${arrayIndex}-${index}`}
+                className="flex items-center gap-3 py-2 px-5 rounded-full bg-[#1c1c1e] border border-white/5 cursor-default pointer-events-none"
+              >
+                <badge.icon className="w-4 h-4 text-white" strokeWidth={2} />
+                <span className="text-sm font-medium tracking-tight text-[#86868b]">
+                  {badge.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   );

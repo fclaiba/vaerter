@@ -1,10 +1,17 @@
 import { Instagram, Linkedin } from "lucide-react";
+import { motion } from "motion/react";
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white pt-24 pb-12 border-t border-white/10">
+    <footer className="bg-transparent text-white pt-24 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-        <div className="md:col-span-2">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:col-span-2"
+        >
           <h2 className="text-3xl font-bold tracking-tighter mb-6">VAERTER</h2>
           <p className="text-gray-400 max-w-sm mb-8">
             Impresión 3D de alta fidelidad. Llevamos tus ideas del plano digital a la realidad física con precisión milimétrica.
@@ -13,9 +20,14 @@ export function Footer() {
             <SocialIcon icon={Instagram} />
             <SocialIcon icon={Linkedin} />
           </div>
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        >
           <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-6">Explorar</h3>
           <ul className="space-y-4">
             <li><a href="#retail" className="text-gray-300 hover:text-white transition-colors">Minorista</a></li>
@@ -23,9 +35,14 @@ export function Footer() {
             <li><a href="#materials" className="text-gray-300 hover:text-white transition-colors">Materiales</a></li>
             <li><a href="#process" className="text-gray-300 hover:text-white transition-colors">Cómo funciona</a></li>
           </ul>
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        >
           <h3 className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-6">Contacto</h3>
           <ul className="space-y-4 text-gray-300">
             <li>La Plata, Buenos Aires</li>
@@ -35,7 +52,7 @@ export function Footer() {
               Respuesta en &lt; 2hs
             </li>
           </ul>
-        </div>
+        </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">

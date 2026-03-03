@@ -34,11 +34,10 @@ export function QuoteModal({ isOpen, onClose }: ModalProps) {
   });
 
   const onSubmit: SubmitHandler<QuoteFormInputs> = (data) => {
-    // Simulate API call
     console.log(data);
     setTimeout(() => {
       toast.success("¡Cotización enviada!", {
-        description: "Te contactaremos en menos de 2 horas.",
+        description: "Te contactaremos a la brevedad.",
         position: "top-center",
         duration: 5000,
       });
@@ -58,33 +57,34 @@ export function QuoteModal({ isOpen, onClose }: ModalProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
       >
         <motion.div
           initial={{ scale: 0.95, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.95, opacity: 0, y: 20 }}
-          className="w-full max-w-2xl bg-neutral-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          className="w-full max-w-2xl bg-[#1c1c1e]/60 backdrop-blur-[60px] saturate-[1.8] border border-white/10 rounded-[40px] overflow-hidden flex flex-col max-h-[90vh] shadow-[0_0_80px_rgba(0,0,0,0.8)]"
         >
           {/* Header */}
-          <div className="p-6 border-b border-white/5 flex items-center justify-between bg-neutral-900 sticky top-0 z-10">
+          <div className="p-8 border-b border-white/5 flex items-center justify-between bg-transparent sticky top-0 z-10">
             <div>
-              <h2 className="text-xl font-bold text-white">Cotizar Proyecto</h2>
-              <p className="text-sm text-gray-400">Paso {step + 1} de {steps.length}: {steps[step]}</p>
+              <h2 className="text-xl font-bold text-white tracking-tight">Iniciar Proyecto</h2>
+              <p className="text-sm font-medium text-[#86868b]">Paso {step + 1} de {steps.length}: {steps[step]}</p>
             </div>
-            <button 
+            <button
               onClick={onClose}
-              className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400"
+              className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white/70"
             >
-              <ArrowLeft className="w-5 h-5 rotate-180" /> {/* Close icon visual using arrow for now or X */}
+              <ArrowLeft className="w-4 h-4 rotate-180" />
               <span className="sr-only">Cerrar</span>
             </button>
           </div>
 
           {/* Progress Bar */}
           <div className="w-full h-1 bg-white/5">
-            <motion.div 
-              className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
+            <motion.div
+              className="h-full bg-white"
               initial={{ width: "0%" }}
               animate={{ width: `${((step + 1) / steps.length) * 100}%` }}
               transition={{ duration: 0.3 }}
@@ -92,24 +92,24 @@ export function QuoteModal({ isOpen, onClose }: ModalProps) {
           </div>
 
           {/* Form Body */}
-          <div className="flex-1 overflow-y-auto p-6 md:p-8">
+          <div className="flex-1 overflow-y-auto p-6 md:p-8 scrollbar-hide">
             <form id="quote-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              
+
               {/* Step 0: Contact Info */}
               {step === 0 && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="space-y-6"
                 >
                   <div className="grid gap-6">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                        <User className="w-4 h-4" /> Nombre Completo
+                      <label className="text-xs font-semibold text-[#86868b] uppercase tracking-wider flex items-center gap-2">
+                        <User className="w-3.5 h-3.5" /> Nombre Completo
                       </label>
-                      <input 
+                      <input
                         {...register("name", { required: true })}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all placeholder:text-gray-600"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white hover:bg-white/10 focus:bg-white/10 focus:outline-none focus:border-white/30 transition-all font-medium placeholder:text-white/30"
                         placeholder="Juan Pérez"
                       />
                       {errors.name && <span className="text-red-400 text-xs">Requerido</span>}
@@ -117,38 +117,38 @@ export function QuoteModal({ isOpen, onClose }: ModalProps) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                          <Mail className="w-4 h-4" /> Email
+                        <label className="text-xs font-semibold text-[#86868b] uppercase tracking-wider flex items-center gap-2">
+                          <Mail className="w-3.5 h-3.5" /> Email
                         </label>
-                        <input 
+                        <input
                           type="email"
                           {...register("email", { required: true })}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all placeholder:text-gray-600"
+                          className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white hover:bg-white/10 focus:bg-white/10 focus:outline-none focus:border-white/30 transition-all font-medium placeholder:text-white/30"
                           placeholder="hola@ejemplo.com"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                          <Phone className="w-4 h-4" /> WhatsApp / Teléfono
+                        <label className="text-xs font-semibold text-[#86868b] uppercase tracking-wider flex items-center gap-2">
+                          <Phone className="w-3.5 h-3.5" /> WhatsApp
                         </label>
-                        <input 
+                        <input
                           type="tel"
                           {...register("phone", { required: true })}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all placeholder:text-gray-600"
+                          className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white hover:bg-white/10 focus:bg-white/10 focus:outline-none focus:border-white/30 transition-all font-medium placeholder:text-white/30"
                           placeholder="+54 9 221..."
                         />
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5 cursor-pointer hover:bg-white/10 transition-colors">
-                      <input 
-                        type="checkbox" 
+                    <div className="flex items-center gap-3 p-5 bg-white/5 rounded-2xl border border-white/5 cursor-pointer hover:bg-white/10 transition-colors">
+                      <input
+                        type="checkbox"
                         id="isCompany"
                         {...register("isCompany")}
-                        className="w-5 h-5 rounded border-gray-600 text-blue-500 focus:ring-blue-500 bg-transparent"
+                        className="w-5 h-5 rounded border-white/20 text-blue-500 focus:ring-blue-500 bg-black/30"
                       />
-                      <label htmlFor="isCompany" className="flex items-center gap-2 cursor-pointer select-none text-gray-300">
-                        <Building2 className="w-4 h-4" />
+                      <label htmlFor="isCompany" className="flex items-center gap-2 cursor-pointer select-none text-white font-medium">
+                        <Building2 className="w-4 h-4 text-[#86868b]" />
                         Represento a una empresa / Soy mayorista
                       </label>
                     </div>
@@ -158,61 +158,61 @@ export function QuoteModal({ isOpen, onClose }: ModalProps) {
 
               {/* Step 1: Project Type */}
               {step === 1 && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="space-y-8"
                 >
                   <div className="space-y-4">
-                     <label className="text-sm font-medium text-gray-300">Tipo de Proyecto</label>
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <label className={cn(
-                          "relative p-6 rounded-2xl border cursor-pointer transition-all hover:bg-white/5 flex flex-col gap-3",
-                          watch("projectType") === "retail" ? "border-blue-500 bg-blue-500/5" : "border-white/10 bg-white/5"
-                        )}>
-                          <input type="radio" value="retail" {...register("projectType")} className="sr-only" />
-                          <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
-                            <Package className="w-5 h-5" />
-                          </div>
-                          <div>
-                            <span className="font-bold text-white block">Pieza Única / Prototipo</span>
-                            <span className="text-sm text-gray-400">Para uso personal, repuestos o regalos.</span>
-                          </div>
-                          {watch("projectType") === "retail" && (
-                            <div className="absolute top-4 right-4 text-blue-500"><CheckCircle2 className="w-5 h-5" /></div>
-                          )}
-                        </label>
+                    <label className="text-xs font-semibold text-[#86868b] uppercase tracking-wider">Tipo de Proyecto</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <label className={cn(
+                        "relative p-6 rounded-2xl border cursor-pointer transition-all flex flex-col gap-3",
+                        watch("projectType") === "retail" ? "border-white bg-white/10" : "border-white/10 bg-white/5 hover:bg-white/10"
+                      )}>
+                        <input type="radio" value="retail" {...register("projectType")} className="sr-only" />
+                        <div className={cn("w-10 h-10 rounded-full flex items-center justify-center", watch("projectType") === "retail" ? "bg-white text-black" : "bg-white/10 text-white")}>
+                          <Package className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="font-bold text-white block">Minorista</span>
+                          <span className="text-sm text-[#86868b]">Prototipos, repuestos o regalos únicos.</span>
+                        </div>
+                        {watch("projectType") === "retail" && (
+                          <div className="absolute top-4 right-4 text-white"><CheckCircle2 className="w-5 h-5" /></div>
+                        )}
+                      </label>
 
-                        <label className={cn(
-                          "relative p-6 rounded-2xl border cursor-pointer transition-all hover:bg-white/5 flex flex-col gap-3",
-                          watch("projectType") === "wholesale" ? "border-purple-500 bg-purple-500/5" : "border-white/10 bg-white/5"
-                        )}>
-                          <input type="radio" value="wholesale" {...register("projectType")} className="sr-only" />
-                          <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
-                            <Building2 className="w-5 h-5" />
-                          </div>
-                          <div>
-                            <span className="font-bold text-white block">Producción en Serie</span>
-                            <span className="text-sm text-gray-400">Merchandising, lotes industriales (+10 u).</span>
-                          </div>
-                          {watch("projectType") === "wholesale" && (
-                            <div className="absolute top-4 right-4 text-purple-500"><CheckCircle2 className="w-5 h-5" /></div>
-                          )}
-                        </label>
-                     </div>
+                      <label className={cn(
+                        "relative p-6 rounded-2xl border cursor-pointer transition-all flex flex-col gap-3",
+                        watch("projectType") === "wholesale" ? "border-white bg-white/10" : "border-white/10 bg-white/5 hover:bg-white/10"
+                      )}>
+                        <input type="radio" value="wholesale" {...register("projectType")} className="sr-only" />
+                        <div className={cn("w-10 h-10 rounded-full flex items-center justify-center", watch("projectType") === "wholesale" ? "bg-white text-black" : "bg-white/10 text-white")}>
+                          <Building2 className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="font-bold text-white block">Mayorista</span>
+                          <span className="text-sm text-[#86868b]">Producción B2B y lotes industriales.</span>
+                        </div>
+                        {watch("projectType") === "wholesale" && (
+                          <div className="absolute top-4 right-4 text-white"><CheckCircle2 className="w-5 h-5" /></div>
+                        )}
+                      </label>
+                    </div>
                   </div>
 
                   <div className="space-y-4">
-                    <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                       <Upload className="w-4 h-4" /> Archivo 3D (STL, OBJ, STEP)
+                    <label className="text-xs font-semibold text-[#86868b] uppercase tracking-wider flex items-center gap-2">
+                      <Upload className="w-3.5 h-3.5" /> Archivo 3D (Opcional)
                     </label>
-                    <div className="border-2 border-dashed border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:border-white/40 hover:bg-white/5 transition-all group cursor-pointer relative">
+                    <div className="border border-dashed border-white/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:border-white/40 hover:bg-white/5 transition-all group cursor-pointer relative bg-black/20">
                       <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" {...register("file")} />
                       <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <Upload className="w-6 h-6 text-gray-400 group-hover:text-white" />
+                        <Upload className="w-5 h-5 text-white" />
                       </div>
-                      <p className="text-sm font-medium text-white">Arrastrá tu archivo aquí o hacé click</p>
-                      <p className="text-xs text-gray-500 mt-2">Máx 50MB. Si no tenés archivo, describí tu idea abajo.</p>
+                      <p className="text-sm font-medium text-white">Adjuntar STL, OBJ o STEP</p>
+                      <p className="text-xs text-[#86868b] mt-2">Máx 50MB. Si no tienes modelo, describe tu idea.</p>
                     </div>
                   </div>
                 </motion.div>
@@ -220,46 +220,46 @@ export function QuoteModal({ isOpen, onClose }: ModalProps) {
 
               {/* Step 2: Details */}
               {step === 2 && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="space-y-6"
                 >
                   <div className="space-y-2">
-                     <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                       <Palette className="w-4 h-4" /> Material Preferido
-                     </label>
-                     <select 
-                        {...register("material")}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 appearance-none cursor-pointer"
-                     >
-                        <option value="PLA" className="bg-neutral-900">PLA (Estándar, Económico)</option>
-                        <option value="PETG" className="bg-neutral-900">PETG (Resistente, Mecánico)</option>
-                        <option value="ABS" className="bg-neutral-900">ABS (Alta Temp, Lijable)</option>
-                        <option value="TPU" className="bg-neutral-900">TPU (Flexible, Goma)</option>
-                        <option value="RESINA" className="bg-neutral-900">Resina (Alto Detalle, Figuras)</option>
-                        <option value="OTRO" className="bg-neutral-900">No estoy seguro / Asesoramiento</option>
-                     </select>
+                    <label className="text-xs font-semibold text-[#86868b] uppercase tracking-wider flex items-center gap-2">
+                      <Palette className="w-3.5 h-3.5" /> Material Preferido
+                    </label>
+                    <select
+                      {...register("material")}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white hover:bg-white/10 focus:bg-white/10 focus:outline-none focus:border-white/30 transition-all font-medium appearance-none cursor-pointer"
+                    >
+                      <option value="PLA" className="bg-[#1c1c1e] text-white">PLA (Estándar, Detalles visuales)</option>
+                      <option value="PETG" className="bg-[#1c1c1e] text-white">PETG (Resistente mecánica y térmica)</option>
+                      <option value="ABS" className="bg-[#1c1c1e] text-white">ABS (Alta Temp, Uso técnico)</option>
+                      <option value="TPU" className="bg-[#1c1c1e] text-white">TPU (Flexible, Goma elástica)</option>
+                      <option value="RESINA" className="bg-[#1c1c1e] text-white">Resina (Precisión ultra alta)</option>
+                      <option value="OTRO" className="bg-[#1c1c1e] text-white">Solicitar asesoramiento</option>
+                    </select>
                   </div>
 
                   <div className="space-y-2">
-                     <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                       <FileText className="w-4 h-4" /> Descripción del Proyecto
-                     </label>
-                     <textarea 
-                       {...register("description")}
-                       rows={4}
-                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 resize-none placeholder:text-gray-600"
-                       placeholder="Contanos sobre el uso de la pieza, cantidad, colores deseados o cualquier detalle importante..."
-                     />
+                    <label className="text-xs font-semibold text-[#86868b] uppercase tracking-wider flex items-center gap-2">
+                      <FileText className="w-3.5 h-3.5" /> Detalles Adicionales
+                    </label>
+                    <textarea
+                      {...register("description")}
+                      rows={4}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white hover:bg-white/10 focus:bg-white/10 focus:outline-none focus:border-white/30 transition-all font-medium resize-none placeholder:text-white/30"
+                      placeholder="Especifica usos, acabados, colores necesarios o cualquier requerimiento especial..."
+                    />
                   </div>
 
-                  <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 flex gap-3 items-start">
-                    <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 text-white shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-medium text-blue-300">Resumen</p>
-                      <p className="text-xs text-blue-200/70 mt-1">
-                        Te contactaremos al email provisto con una cotización formal. Si es urgente, mencionálo en la descripción.
+                      <p className="text-sm font-medium text-white">Siguiente paso</p>
+                      <p className="text-xs text-[#86868b] mt-1">
+                        Un especialista de nuestro equipo revisará tu solicitud y se pondrá en contacto para enviar una cotización final.
                       </p>
                     </div>
                   </div>
@@ -269,34 +269,34 @@ export function QuoteModal({ isOpen, onClose }: ModalProps) {
           </div>
 
           {/* Footer Actions */}
-          <div className="p-6 border-t border-white/5 bg-neutral-900 flex justify-between items-center">
+          <div className="p-6 border-t border-white/5 bg-transparent flex justify-between items-center relative z-10">
             {step > 0 ? (
-              <button 
-                type="button" 
+              <button
+                type="button"
                 onClick={prevStep}
-                className="px-6 py-3 text-gray-400 hover:text-white font-medium transition-colors"
+                className="px-6 py-3 text-[#86868b] hover:text-white font-medium transition-colors"
               >
-                Atrás
+                Anterior
               </button>
             ) : (
               <div /> /* Spacer */
             )}
 
             {step < steps.length - 1 ? (
-              <button 
+              <button
                 type="button"
                 onClick={nextStep}
-                className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2"
+                className="px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 hover:scale-105 transition-all flex items-center gap-2 active:scale-95"
               >
                 Siguiente <ArrowRight className="w-4 h-4" />
               </button>
             ) : (
-              <button 
+              <button
                 type="submit"
                 form="quote-form"
-                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                className="px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 hover:scale-105 transition-all flex items-center gap-2 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
               >
-                Enviar Solicitud <CheckCircle2 className="w-4 h-4" />
+                Confirmar <CheckCircle2 className="w-4 h-4" />
               </button>
             )}
           </div>

@@ -40,11 +40,11 @@ export function Modal({ isOpen, onClose, children, className, title }: ModalProp
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className={cn(
-              "fixed inset-4 md:inset-auto md:top-[5%] md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-4xl md:max-h-[90vh] bg-neutral-900 border border-white/10 rounded-3xl shadow-2xl z-[70] overflow-hidden flex flex-col",
+              "fixed inset-4 md:inset-auto md:top-[5%] md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-4xl md:max-h-[90vh] bg-[#1c1c1e]/60 backdrop-blur-[60px] saturate-[1.8] border border-white/10 rounded-[40px] shadow-[0_0_80px_rgba(0,0,0,0.8)] z-[70] overflow-hidden flex flex-col",
               className
             )}
           >
-            <div className="flex items-center justify-between p-6 border-b border-white/5 bg-neutral-900/50 backdrop-blur-sm sticky top-0 z-10">
+            <div className="flex items-center justify-between p-8 border-b border-white/5 bg-transparent sticky top-0 z-10">
               <h2 className="text-xl font-bold text-white">{title}</h2>
               <button
                 onClick={onClose}
